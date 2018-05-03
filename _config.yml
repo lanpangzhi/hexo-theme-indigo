@@ -15,21 +15,21 @@ menu:
     url: /archives
   tags:
     url: /tags
-  th-list:
-    text: Categories
-    url: /categories
+  # th-list:
+  #  text: Categories
+  #  url: /categories
   github:
-    url: https://github.com/yscoder
+    url: https://github.com/lanpangzhi
     target: _blank
-  weibo:
-    url: http://www.weibo.com/ysweb
-    target: _blank
-  link:
-    text: 测试
-    url: /custom
+  # weibo:
+  #  url: http://www.weibo.com/ysweb
+  #  target: _blank
+  # link:
+  #  text: 测试
+  #  url: /custom
 
 # 你的头像url
-avatar: /img/avatar.jpg
+avatar: /img/avatar.png
 # avatar link
 avatar_link: /
 # 头像背景图
@@ -38,7 +38,7 @@ brand: /img/brand.jpg
 favicon: /favicon.ico
 
 # email
-email: 634206017@qq.com
+email: 875727617@qq.com
 
 # 设置 Android L Chrome 浏览器状态栏颜色
 color: '#3F51B5'
@@ -62,10 +62,10 @@ show_last_updated: true
 share: true
 
 # 是否开启打赏，关闭 reward: false
-reward:
-  title: 谢谢大爷~
-  wechat: /img/wechat.jpg     #微信，关闭设为 false
-  alipay: /img/alipay.jpg     #支付宝，关闭设为 false
+# reward: false
+  # title: 谢谢大爷~
+  # wechat: false     #微信，关闭设为 false /img/wechat.jpg
+  # alipay: false    #支付宝，关闭设为 false /img/alipay.jpg 
 
 # 是否开启搜索
 search: true
@@ -79,13 +79,13 @@ toc:
   list_number: true  # 是否显示数字排序
 
 # 文章页留言内容，hexo中所有变量及辅助函数等均可调用，具体请查阅 hexo.io
-postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
+postMessage: <a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
 
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
 cnzz: false
 
 # 百度统计，如要开启，改为你的 key
-baidu_tongji: false
+baidu_tongji: 6793943ebee3558917970a50987cf13b
 
 # 腾讯分析，如要开启，输入站点id
 tajs: false
@@ -118,10 +118,10 @@ gitment: false
 
 # Valine Comment system. https://valine.js.org
 valine:
-  enable: false # 如果你想使用valine，请将值设置为 true
-  appId:  # your leancloud appId
-  appKey:  # your leancloud appKey
-  notify: false # Mail notify
+  enable: true # 如果你想使用valine，请将值设置为 true
+  appId:  UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz
+  appKey: ivuSqsuVkomI9MQzJXCoFRbR
+  notify: true # Mail notify
   verify: false # Verify code
   avatar: mm # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
   placeholder: Just go go # Comment Box placeholder
@@ -140,15 +140,15 @@ hyper_id: false
 canonical: false
 
 # 版权起始年份
-since_year: 2015
+since_year: 2016
 
 # 用户页面中作者相关的描述性文字，如不需要设为 false
 about: 用户页面中作者相关的描述性文字，如不需要设为 false
 
 # “不蒜子”访问量统计，详见 http://ibruce.info/2015/04/04/busuanzi/
-visit_counter:
-  site_uv: 站点总访客数：
-  site_pv: 站点总访问量：
+# visit_counter:
+# site_uv: 站点总访客数：
+# site_pv: 站点总访问量：
 
 # 动态定义title
 title_change:
@@ -163,4 +163,5 @@ cdn: true
 lightbox: true
 
 # icp备案号  ICP_license: 京ICP备1234556号-1
-ICP_license: false
+ICP_license: 京ICP备17033838号
+

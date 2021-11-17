@@ -3,6 +3,8 @@
     <%- partial('plugins/tajs') %>
     <%- partial('plugins/baidu') %>
     <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    <link rel="dns-prefetch" href="//https://cdn.jsdelivr.net/" />
     <% if(theme.google_site_verification){ %>
     <meta name="google-site-verification" content="<%- theme.google_site_verification%>">
     <% }%>
@@ -45,7 +47,7 @@
             });
     }
     %>
-    <meta name="keywords" content="<%= keyWords %>">
+    <meta name="keywords" content="前端,vue,javascript">
     <%- open_graph({twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
     <% if ((config.feed) && (config.feed.path.length)) { %>
         <link rel="alternate" type="application/atom+xml" title="<%= config.title %>" href="<%- url_for(config.feed.path) %>">

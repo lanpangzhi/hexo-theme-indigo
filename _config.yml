@@ -56,7 +56,7 @@ mathjax: false
 archive_yearly: true
 
 # 是否显示文章最后更新时间
-show_last_updated: true
+show_last_updated: false
 
 # 是否开启分享
 share: true
@@ -157,7 +157,7 @@ title_change:
 
 # 设置为 true 发布后将使用 unpkg cdn 最新的主题样式
 # 如果想让你的自定义样式生效，把此项设为 false
-cdn: false
+cdn: true
 
 # 设置为 true 将使用 lightbox render 图片
 lightbox: true

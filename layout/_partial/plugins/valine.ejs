@@ -1,7 +1,7 @@
 <% if (theme.valine.enable ){ %>
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
+    <script src="<%- url_for(theme_js('/js/waline', cache)) %>"></script>
     <!-- Valine Comments script -->
     <script>
         Waline({

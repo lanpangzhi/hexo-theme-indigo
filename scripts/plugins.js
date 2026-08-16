@@ -1,6 +1,8 @@
 const { version, name } = require('../package.json')
+const ejs = require('ejs')
 
 hexo.extend.helper.register('theme_version', () => version)
+hexo.extend.helper.register('render_theme_template', (template, locals) => ejs.render(template, locals))
 
 const source = (path, cache, ext) => {
     if (cache) {

@@ -119,6 +119,8 @@ gitment: false
 # Valine Comment system. https://valine.js.org
 valine:
   enable: true # 如果你想使用valine，请将值设置为 true
+  serverURL: https://waline.langpz.com
+  clientVersion: 3.15.2
   appId:  UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz
   appKey: ivuSqsuVkomI9MQzJXCoFRbR
   notify: true # Mail notify
@@ -164,3 +166,4 @@ lightbox: true
 
 # icp备案号  ICP_license: 京ICP备1234556号-1
 ICP_license: 京ICP备17033838号
+ICP_link: https://beian.miit.gov.cn/

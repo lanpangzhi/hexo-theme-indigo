@@ -3,7 +3,7 @@
     <div class="content">
         <%- partial('updated') %>
         <% if(theme.postMessage) {%>
-        <%- _.template(theme.postMessage)(locals) %>
+        <%- render_theme_template(theme.postMessage, locals) %>
         <% } %>
     </div>
     <% } %>

@@ -1,14 +1,14 @@
 <% if (theme.valine.enable ){ %>
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <link href="https://unpkg.com/@waline/client@<%- theme.valine.clientVersion || '3.15.2' %>/dist/waline.css" rel="stylesheet">
     <!-- <script src="<%- url_for(theme_js('/js/waline', cache)) %>"></script> -->
     <!-- Valine Comments script -->
     <script type="module">
-        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        import { init } from 'https://unpkg.com/@waline/client@<%- theme.valine.clientVersion || '3.15.2' %>/dist/waline.js';
         init({
             el: '#comments',
-            serverURL: 'https://waline.langpz.com',
+            serverURL: '<%- theme.valine.serverURL || 'https://waline.langpz.com' %>',
         });
     </script>
     <!-- Valine Comments end -->

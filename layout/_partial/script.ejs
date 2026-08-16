@@ -10,7 +10,7 @@ lazyScripts.push('//s95.cnzz.com/z_stat.php?id=<%-theme.cnzz %>&web_id=<%-theme.
 <script src="<%- url_for(theme_js('/js/main', cache)) %>"></script>
 <% if (theme.search){ %>
 <%- partial('search') %>
-<script src="<%- url_for(theme_js('/js/search', cache)) %>" async></script>
+<script src="<%- url_for(theme_js('/js/search', cache)) %>"></script>
 <% } %>
 
 <%- partial('plugins/mathjax') %>

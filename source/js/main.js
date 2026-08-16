@@ -108,18 +108,49 @@
 
             var bannerH = $('.post-header').clientHeight,
                 headerH = header.clientHeight,
-                titles = $('#post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
+                tocLinks = toc.querySelectorAll('a[href^="#"]'),
+                tocEntries = [];
 
-            toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
+            // Hexo 8 URL-encodes non-ASCII fragments in TOC links while heading
+            // IDs remain readable Unicode. Resolve the decoded fragment through
+            // getElementById instead of interpolating it into a CSS selector.
+            for (var linkIndex = 0; linkIndex < tocLinks.length; linkIndex++) {
+                var link = tocLinks[linkIndex],
+                    fragment = link.getAttribute('href').slice(1),
+                    heading;
+
+                try {
+                    fragment = decodeURIComponent(fragment);
+                } catch (error) {
+                    // Keep the literal fragment if it is not valid URI encoding.
+                }
+
+                heading = d.getElementById(fragment);
+                if (heading && link.parentNode) {
+                    tocEntries.push({
+                        heading: heading,
+                        link: link,
+                        item: link.parentNode
+                    });
+                }
+            }
+
+            if (!tocEntries.length) {
+                return {
+                    fixed: noop,
+                    actived: noop
+                };
+            }
+
+            var firstEntry = tocEntries[0];
+            firstEntry.item.classList.add('active');
 
             // Make every child shrink initially
             var tocChilds = toc.querySelectorAll('.post-toc-child');
             for (i = 0, len = tocChilds.length; i < len; i++) {
                 tocChilds[i].classList.add('post-toc-shrink');
             }
-            var firstChild =
-                toc.querySelector('a[href="#' + titles[0].id + '"]')
-                    .nextElementSibling;
+            var firstChild = firstEntry.link.nextElementSibling;
             if (firstChild) {
                 firstChild.classList.add('post-toc-expand');
                 firstChild.classList.remove('post-toc-shrink');
@@ -132,7 +163,13 @@
              * @param currEle current active li element
              */
             var handleTocActive = function (prevEle, currEle) {
-                prevEle.classList.remove('active');
+                if (!currEle || prevEle === currEle) {
+                    return;
+                }
+
+                if (prevEle) {
+                    prevEle.classList.remove('active');
+                }
                 currEle.classList.add('active');
 
                 var siblingChilds = currEle.parentElement.querySelectorAll('.post-toc-child');
@@ -152,21 +189,15 @@
                     top >= bannerH - headerH ? toc.classList.add('fixed') : toc.classList.remove('fixed');
                 },
                 actived: function (top) {
-                    for (i = 0, len = titles.length; i < len; i++) {
-                        if (top > offset(titles[i]).y - headerH - 5) {
-                            var prevListEle = toc.querySelector('li.active');
-                            var currListEle = toc.querySelector('a[href="#' + titles[i].id + '"]').parentNode;
+                    var currentEntry = firstEntry;
 
-                            handleTocActive(prevListEle, currListEle);
+                    for (var entryIndex = 0; entryIndex < tocEntries.length; entryIndex++) {
+                        if (top > offset(tocEntries[entryIndex].heading).y - headerH - 5) {
+                            currentEntry = tocEntries[entryIndex];
                         }
                     }
 
-                    if (top < offset(titles[0]).y) {
-                        handleTocActive(
-                            toc.querySelector('li.active'),
-                            toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode
-                        );
-                    }
+                    handleTocActive(toc.querySelector('li.active'), currentEntry.item);
                 }
             }
         })(),
